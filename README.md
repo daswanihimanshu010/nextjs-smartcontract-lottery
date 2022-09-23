@@ -184,7 +184,7 @@ Install: PostCss Language Support Ext, Tailwind ext
 
 2. Helps us hosting our decentalized application on a decentralized node/server.
 
-3. our code --> Hash --> IPFS (Our node) --> Our node is connected to massive network of IPFS nodes runnin by people. What other node can do, any node can pin your data so your data persists. You can keep doing this so your code could be pinned by all nodes so it can persits in a decentralized way. We need other nodes to pin our data because if our node goes down that data goes down.
+3. our code --> Hash --> IPFS (Our node) --> Our node is connected to massive network of IPFS nodes runnin by people. What other node can do, any node can pin your data so your data persists. You can keep doing this so your code could be pinned by all nodes so it can persits in a decentralized way. We need other nodes to pin our data because if our node goes down that data goes down. IPFS has this limitation which is solved by Filecoin.
 
 4. To export code to IPFS run:
 
@@ -195,4 +195,35 @@ Now we have folder named `out`
 
 5. Now visit: https://fleek.co/ (Auto deployment of our code on IPFS)
 
+Uses IPFS for deployment and Filecoin to keep your data distributed over many nodes.
+
 Signup via github.
+
+Build command: yarn install && yarn run build && yarn next export
+
+`It is CI/CD tool so you can make changes and add more commit and push code and it will keep deloying automatically.`
+
+# Filecoin
+
+Filecoin is a blockchain to keep your data distributed over various nodes so it persits and does not goes down if you shut down your node.
+
+1. Client makes a time limited deal via app or smart contract to store data. Filecoin protocol converts data into content addressed DAG.
+
+2. Provider generate an initial Proof of Replication (PoRep) solving the problem of data persistance to verify that they have received the client's data. PoRep is then plublished to Filecoin.
+
+3. Over time, providers prove that they still have random subsets of client data, creating proof of SpaceTime (PoST) published to blockchain thus solving the problem of reliability or trust on provider.Providers are paid in filecoin if they timely deliver PoST and penalized slashing if they not.
+
+4. Towards the end of storage deal, client can renew their deal or opt out and ask for data retrievel.
+
+5. It lets you decide for much time do you want to store your data, with how many replications on different storage providers. Your data, your choice.
+
+6. IPFS gives you benefit of content addressing and filecoin gives you persistance gaurantee.
+
+7. `IPFS` is protocol and `filecoin` is blockchain. `Fleek` (CI/CD tool) helps us communicate with both of them with automatically deployment of your projects.
+
+`Note: Ethereum, polygon are logic layers of blockchain, that is why we will use IPFS and filecoin as a storage layer in blockchain because saving a ton of data costs lot of gas on logic layers i.e. Ethereum, polygon.`
+
+```
+Live Frontend Application url:
+Visit: https://restless-block-3012.on.fleek.co/
+```
